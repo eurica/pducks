@@ -1,5 +1,6 @@
 # Specific files that I've been testing with:
-.php
+*.php
+junk.js
 status.html
 
 # OS generated files #
