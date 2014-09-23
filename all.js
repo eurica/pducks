@@ -13,9 +13,7 @@ $.get( "/api/v1/incidents/count?date_range=all&status=all&assigned_to_user="+cur
 })
 
 //Make the fancy tables sortable:
-(function() {
-  var s=document.createElement('script');
-  s.setAttribute('src','https://eurica.github.io/pducks/sorttable.js');
-  s.setAttribute('onload','make_sortable()');
-  document.getElementsByTagName('head')[0].appendChild(s);}
-)();
+var s=document.createElement('script');
+s.setAttribute('src','https://eurica.github.io/pducks/sorttable.js');
+s.setAttribute('onload','make_sortable()');
+document.getElementsByTagName('head')[0].appendChild(s);
