@@ -12,7 +12,7 @@ embedScript = function(src) {
   document.getElementsByTagName('head')[0].appendChild(s); 
 }
 
-window.onload = function() {
+pducks = function() {
   console.log("Starting PDucks");
 
   embedScript('https://eurica.github.io/pducks/all.js')
@@ -23,5 +23,6 @@ window.onload = function() {
   }
   console.log("Loaded PDucks");
 }
+window.onload = pducks()
 
 // @require       http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.js
