@@ -26,14 +26,14 @@ conference_detail = function(elem){
   if(elem.url) {
     url = elem.url;
     icon="https://eurica.github.io/pducks/img/hangout.png"
-  } else if (elem.tel) {
+  } else if (elem.number) {
     url = "tel:"+elem.tel;
     icon="https://eurica.github.io/pducks/img/phone.png"
   } else { 
     return;
   }
 
-  conf_row = "<tr><th>Conference Call:</th><td><a href='"+url+"' style='display:block'><img style='height:32px;width:32px;' src='"+icon+"'>"+url+"</a></td></tr>"
+  conf_row = "<tr><th>Conference:</th><td><a href='"+url+"' style='display:block'><img style='height:32px;width:32px;' src='"+icon+"'> "+(elem.name || url)+"</a></td></tr>"
   $(".incident-details tbody").first().append(conf_row)  
 }
 
