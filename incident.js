@@ -1,4 +1,4 @@
-$(".incident-details").first().after('<div class="pd-page-content-header"><h3 class="pull-left">Incident Details</h3><div id ="incident-context"></div><div id ="incident-details"></div>');
+$(".incident-details").first().after('<div class="pd-page-content-header"><h3>Incident Details</h3><div id ="incident-context"></div><div id ="incident-details"></div>');
 i=JSON.parse($("#json-incident").attr("data-incident"))
 ile = i.trigger_details_html_url.replace(/.*pagerduty.com\//,"/api/v1/") + "?include%5B%5D=channel"
 
@@ -31,7 +31,7 @@ context_detail = function(i,elem){
   if(elem.type=="image") {
     content = "<img src='"+elem.src+"'>"
   } else if  (elem.type=="iframe") {
-    content = "<iframe src='"+elem.src+"' style='width:100%'></iframe>"
+    content = "<iframe src='"+elem.src+"' style='width:100%; border:0;'></iframe>"
   } 
   $("#incident-context").append("<a href='"+elem.src+"'>"+name+"</a><br>"+content)   
 }
