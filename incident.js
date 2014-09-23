@@ -7,7 +7,7 @@ $.get( ile, function( data ) {
   $("#incident-details").html("<pre>"+JSON.stringify(data.log_entry.channel.details,pretty_print,4)+"</pre>")
   if (context = data.log_entry.channel.details.context) {
     if(context.embed) $.each(context.embed, context_detail)
-    if(context.conference) $.each(context.embed, conference_detail)
+    if(context.conference) conference_detail(context.conference)
   }
 });
 
@@ -21,9 +21,22 @@ pretty_print = function (key, value) {
   return value;
 }
 
-conference_detail = function(i,elem){
+conference_detail = function(elem){
   console.log(elem);
+  if(elem.url) {
+    url = elem.url;
+    icon="https://eurica.github.io/pducks/img/hangout.png"
+  } else if (elem.tel) {
+    url = "tel:"+elem.tel;
+    icon="https://eurica.github.io/pducks/img/phone.png"
+  } else { 
+    return;
+  }
+
+  conf_row = "<tr><th>Conference Call:</th><td><a href='"+url+"' style='display:block'><img style='height:32px;width:32px;' src='"+icon+"'>"+url+"</a></td></tr>"
+  $(".incident-details tbody").first().append(conf_row)  
 }
+
 context_detail = function(i,elem){
   console.log(elem);
   name = elem.name || elem.src || elem.type || ""
