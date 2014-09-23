@@ -44,7 +44,7 @@ context_detail = function(i,elem){
   if(elem.type=="image") {
     content = "<img src='"+elem.src+"'>"
   } else if  (elem.type=="iframe") {
-    content = "<iframe src='"+elem.src+"' style='width:100%; border:0;'></iframe>"
+    content = "<iframe src='"+elem.src+"' style='width:100%; border:1px solid #333;'></iframe>"
   } 
   $("#incident-context").append("<a href='"+elem.src+"'>"+name+"</a><br>"+content)   
 }
