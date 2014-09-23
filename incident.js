@@ -1,4 +1,4 @@
-$(".incident-details").first().after('<div class="pd-page-content-header"><h3 class="pull-left">Incident Details</h3></div><div id ="incident-context"><div id ="incident-details"></div>');
+$(".incident-details").first().after('<div class="pd-page-content-header"><h3 class="pull-left">Incident Details</h3><div id ="incident-context"></div><div id ="incident-details"></div>');
 i=JSON.parse($("#json-incident").attr("data-incident"))
 ile = i.trigger_details_html_url.replace(/.*pagerduty.com\//,"/api/v1/") + "?include%5B%5D=channel"
 
@@ -17,6 +17,7 @@ $("td.activity:contains('Notified ')").parent().hide()
 
 pretty_print = function (key, value) {
   if($.isNumeric(value)) return "<b>"+value+"</b>";
+  if(key=="context") return "(hidden)";
   return value;
 }
 
