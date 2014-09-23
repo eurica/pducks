@@ -21,7 +21,6 @@ pducks = function() {
     console.log("PDucks: Incident detail page");
     (function() {var s=document.createElement('script');s.setAttribute('src','https://eurica.github.io/pducks/incident.js');document.getElementsByTagName('head')[0].appendChild(s);})();
   }
-  console.log("Loaded PDucks");
 }
 
 if (window.addEventListener) // W3C standard
