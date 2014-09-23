@@ -1,26 +1,19 @@
+//This is code that's loaded ONLY on the incident detail page
+
+//Load the trigger
 $(".incident-details").first().after('<div class="pd-page-content-header"><h3>Incident Details</h3><div id ="incident-context"></div><div id ="incident-details"></div>');
 i=JSON.parse($("#json-incident").attr("data-incident"))
 ile = i.trigger_details_html_url.replace(/.*pagerduty.com\//,"/api/v1/") + "?include%5B%5D=channel"
-
 $.get( ile, function( data ) {
   console.log( data );
   $("#incident-details").html("<pre>"+JSON.stringify(data.log_entry.channel.details,pretty_print,4)+"</pre>")
-  if (context = data.log_entry.channel.details.context) {
-    if(context.embed) $.each(context.embed, context_detail)
-    if(context.conference) conference_detail(context.conference)
+  if (context = data.log_entry.channel.details.context) { //https://pagerduty.atlassian.net/wiki/pages/viewpage.action?pageId=14942338
+    if(context.conference) conference_detail(context.conference) 
+    if(context.embed) $.each(context.embed, context_detail) 
   }
 });
 
-//remove notification ILEs 
-//TODO: Would also hide notes with "Notfied: " I think
-$("td.activity:contains('Notified ')").parent().hide()
-
-pretty_print = function (key, value) {
-  if($.isNumeric(value)) return "<b>"+value+"</b>";
-  if(key=="context") return "(hidden)";
-  return value;
-}
-
+//Parse the details.conference
 conference_detail = function(elem){
   console.log(elem);
   if(elem.url) {
@@ -37,6 +30,7 @@ conference_detail = function(elem){
   $(".incident-details tbody").first().append(conf_row)  
 }
 
+//Parse the details.context
 context_detail = function(i,elem){
   console.log(elem);
   name = elem.name || elem.src || elem.type || ""
@@ -48,4 +42,12 @@ context_detail = function(i,elem){
   } 
   $("#incident-context").append("<a href='"+elem.src+"'>"+name+"</a><br>"+content)   
 }
+pretty_print = function (key, value) {
+  if($.isNumeric(value)) return "<b>"+value+"</b>";
+  if(key=="context") return "(hidden)"; //We're already displaying the context
+  return value;
+}
 
+//remove notification ILEs 
+//TODO: Would also hide notes with "Notfied: " I think
+$("td.activity:contains('Notified ')").parent().hide()

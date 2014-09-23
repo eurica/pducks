@@ -1,3 +1,7 @@
+//This is code that's loaded on every PD page
+
+//Show open incidents in the nav bar
+//TODO: Make this less ugly
 current_user = JSON.parse($("#json-current_user").attr("data-current_user"))
 $.get( "/api/v1/incidents/count?date_range=all&status=all&assigned_to_user="+current_user.id, function(data) {
   console.log(data)
@@ -9,10 +13,9 @@ $.get( "/api/v1/incidents/count?date_range=all&status=all&assigned_to_user="+cur
 })
 
 //Make the fancy tables sortable:
-$(".pd-fancy-list-table").addClass("sortable");
-
 (function() {
   var s=document.createElement('script');
   s.setAttribute('src','https://eurica.github.io/pducks/sorttable.js');
+  s.setAttribute('onload','make_sortable()');
   document.getElementsByTagName('head')[0].appendChild(s);}
 )();

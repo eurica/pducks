@@ -493,4 +493,6 @@ var forEach = function(object, block, context) {
 	}
 };
 
-if($(".pd-fancy-list-table").length>0) sorttable.makeSortable($(".pd-fancy-list-table")[0]);
+make_sortable = function() {
+  if($(".pd-fancy-list-table").length>0) sorttable.makeSortable($(".pd-fancy-list-table")[0]);
+}
