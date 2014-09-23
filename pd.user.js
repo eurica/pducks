@@ -23,6 +23,14 @@ pducks = function() {
   }
   console.log("Loaded PDucks");
 }
-window.onload = pducks()
+
+if (window.addEventListener) // W3C standard
+{
+  window.addEventListener('load', pducks, false); 
+} 
+else if (window.attachEvent) // Microsoft
+{
+  window.attachEvent('onload', pducks);
+}
 
 // @require       http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.js
