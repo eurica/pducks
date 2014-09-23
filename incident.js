@@ -1,6 +1,7 @@
 $(".incident-details").first().after('<div class="pd-page-content-header"><h3 class="pull-left">Incident Details</h3></div><div id ="incident-details"></div>');
 i=JSON.parse($("#json-incident").attr("data-incident"))
 ile = i.trigger_details_html_url.replace(/.*pagerduty.com\//,"/api/v1/") + "?include%5B%5D=channel"
+
 add_detail = function(name, d){
   ext = d.replace(/.*\./,"")
   console.log(ext)
@@ -17,9 +18,15 @@ add_detail = function(name, d){
 }
 $.get( ile, function( data ) {
   console.log( data );
-  $.each(data.log_entry.channel.details, add_detail)
+  $("#incident-details").html("<pre>"+JSON.stringify(data.log_entry.channel,pretty_print,4)+"</pre>")
+  //$.each(data.log_entry.channel.details, add_detail)
 });
 
 //remove notification ILEs 
 //TODO: Would also hide notes with "Notfied: " I think
-$("td.activity:contains('Notified ')").parent().hide()
+//$("td.activity:contains('Notified ')").parent().hide()
+
+pretty_print = function (key, value) {
+  if($.isNumeric(value)) return "<b>"+value+"</b>";
+  return value;
+}

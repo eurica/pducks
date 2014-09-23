@@ -493,3 +493,4 @@ var forEach = function(object, block, context) {
 	}
 };
 
+sorttable.makeSortable($(".pd-fancy-list-table")[0]);
