@@ -153,9 +153,8 @@ if (window.location.pathname.indexOf("service")>0 || window.location.pathname.in
   (function() {
     //This is code that's loaded ONLY on the serices/users/escalation_policies page
     console.log("PDucks: Stupid Clippy demo");
-    s = document.createElement('style');
-    s.setAttribute('href', "https://eurica.github.io/pducks/clippy/build/clippy.css");
-    document.getElementsByTagName('head')[0].appendChild(s);
+    $('head').append('<link rel="stylesheet" type="text/css" href="https://eurica.github.io/pducks/clippy/build/clippy.css">');
+
     s=document.createElement('script');
     s.setAttribute('src', 'https://eurica.github.io/pducks/clippy/build/clippy.min.js');
     document.getElementsByTagName('head')[0].appendChild(s);
