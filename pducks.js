@@ -149,7 +149,7 @@ if (window.location.href.indexOf("pagerduty.com/incidents/") > -1) {
 
 }
 
-if (window.location.pathname.indexOf("service")>0 || window.location.pathname.indexOf("user")>0 || window.location.pathname.indexOf("escalation_policies")>0 ) {
+if (window.location.pathname.indexOf("service")>0 || window.location.pathname.indexOf("user")>0 || window.location.pathname.indexOf("escalation_policies")>0  || window.location.pathname.indexOf("schedules")>0 ) {
   (function() {
     //This is code that's loaded ONLY on the serices/users/escalation_policies page
     console.log("PDucks: Stupid Clippy demo");
@@ -165,6 +165,18 @@ if (window.location.pathname.indexOf("service")>0 || window.location.pathname.in
     if (window.location.pathname.indexOf("user")>0) {
       window.setTimeout(function(){PDucky.speak('You look like you should add some more users.')},3000)
     }
+
+    if (window.location.pathname.indexOf("schedules")>0) {
+      var action = $(".edit-calendar").first()
+      if(action) {
+        PDucky.moveTo(action.offset().left, action.offset().top)
+        $(document).bind("click", function() {
+          PDucky.animate("GestureUp")
+          PDucky.speak("You look like you're considering editing a schedule. Don't.")
+        });
+      }
+    }
+
 
   })()
 }
