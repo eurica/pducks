@@ -1,10 +1,14 @@
 // ==UserScript==
 // @name          PD Incident View
-// @namespace     http://pdt-dave.pagerduty.com
-// @description   PagerDuty UI tweaks
+// @namespace     https://github.com/eurica/pducks/tree/gh-pages
+// @description   PDucks PagerDuty UX tweaks
 // @match         https://*.pagerduty.com/*
-// @require       https://eurica.github.io/pducks/sorttable.js
+// @version 1.1
 // ==/UserScript==
+
+//Politeness pro-tip, add "0.0.0.0 p.errorception.com" to /etc/hosts
+
+var PDucks = PDucks || {};
 
 embedScript = function(src) {
   s=document.createElement('script');
@@ -13,14 +17,8 @@ embedScript = function(src) {
 }
 
 pducks = function() {
-  console.log("Starting PDucks");
-
-  embedScript('https://eurica.github.io/pducks/all.js')
-  
-  if(window.location.href.indexOf("pagerduty.com/incidents/") > -1 ) {  
-    console.log("PDucks: Incident detail page");
-    (function() {var s=document.createElement('script');s.setAttribute('src','https://eurica.github.io/pducks/incident.js');document.getElementsByTagName('head')[0].appendChild(s);})();
-  }
+  console.log("Loading PDucks");
+  embedScript('https://eurica.github.io/pducks/pducks.js')
 }
 
 if (window.addEventListener) // W3C standard
@@ -31,5 +29,3 @@ else if (window.attachEvent) // Microsoft
 {
   window.attachEvent('onload', pducks);
 }
-
-// @require       http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.js
