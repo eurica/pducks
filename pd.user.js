@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name          PD Incident View
+// @name          PDucks (PDUX)
 // @namespace     https://github.com/eurica/pducks/tree/gh-pages
 // @description   PDucks PagerDuty UI tweaks
 // @match         https://*.pagerduty.com/*
@@ -16,22 +16,11 @@ embedScript = function(src) {
   s.setAttribute('src',src);
   document.getElementsByTagName('head')[0].appendChild(s); 
 }
-embedCSS = function(src) {
-  s = document.createElement('style');
-  s.setAttribute('src', src);
-  document.getElementsByTagName('head')[0].appendChild(s);
-}
 
 pducks = function() {
   console.log("Loading PDucks");
   embedScript('https://eurica.github.io/pducks/pducks.js')
-
-  embedCSS('https://eurica.github.io/pducks/clippy/build/clippy.css')
-  embedScript('https://eurica.github.io/pducks/clippy/build/clippy.min.js')
-
 }
-
-
 
 if (window.addEventListener) // W3C standard
 {

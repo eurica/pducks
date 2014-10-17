@@ -149,4 +149,17 @@ if (window.location.href.indexOf("pagerduty.com/incidents/") > -1) {
 
 }
 
+if (window.location.pathname.indexOf("service")>0 || window.location.pathname.indexOf("user")>0 ) {
+  (function() {
+    //This is code that's loaded ONLY on the serices/users page
+    console.log("PDucks: Stupid Clippy demo");
+    s = document.createElement('style');
+    s.setAttribute('src', "https://eurica.github.io/pducks/clippy/build/clippy.css");
+    document.getElementsByTagName('head')[0].appendChild(s);
+    s=document.createElement('script');
+    s.setAttribute('src', 'https://eurica.github.io/pducks/clippy/build/clippy.min.js');
+    document.getElementsByTagName('head')[0].appendChild(s);
+
+  })()
+}
 
