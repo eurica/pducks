@@ -159,6 +159,13 @@ if (window.location.pathname.indexOf("service")>0 || window.location.pathname.in
     s.setAttribute('src', 'https://eurica.github.io/pducks/clippy/build/clippy.min.js');
     document.getElementsByTagName('head')[0].appendChild(s);
 
+    if (window.location.pathname.indexOf("service")>0) { 
+      window.setTimeout(function(){PDucky.speak("You look like you're trying to upgrade to enterprise.")},3000)
+    }
+    if (window.location.pathname.indexOf("user")>0) {
+      window.setTimeout(function(){PDucky.speak('You look like you should add some more users.')},3000)
+    }
+
   })()
 }
 
