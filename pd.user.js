@@ -19,7 +19,7 @@ embedScript = function(src) {
 
 pducks = function() {
   console.log("Loading PDucks");
-  embedScript('https://eurica.github.io/pducks/pducks.js')
+  embedScript('https://eurica.github.io/pducks/pducks.js') //Change this line to run your own
 }
 
 if (window.addEventListener) // W3C standard
