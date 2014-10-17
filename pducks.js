@@ -149,9 +149,9 @@ if (window.location.href.indexOf("pagerduty.com/incidents/") > -1) {
 
 }
 
-if (window.location.pathname.indexOf("service")>0 || window.location.pathname.indexOf("user")>0 ) {
+if (window.location.pathname.indexOf("service")>0 || window.location.pathname.indexOf("user")>0 || window.location.pathname.indexOf("escalation_policies")>0 ) {
   (function() {
-    //This is code that's loaded ONLY on the serices/users page
+    //This is code that's loaded ONLY on the serices/users/escalation_policies page
     console.log("PDucks: Stupid Clippy demo");
     s = document.createElement('style');
     s.setAttribute('src', "https://eurica.github.io/pducks/clippy/build/clippy.css");
