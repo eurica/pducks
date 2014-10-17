@@ -1013,3 +1013,17 @@ clippy.Queue.prototype = {
     }
 };
 
+var PDucky
+clippy.load('Clippy', function(agent) {
+      PDucky = agent
+      console.log(PDucky)
+      agent.show();
+      $(".clippy").css("position","fixed")
+      agent.moveTo(0,0)
+      $(document).bind("click", function() {
+        items = ["LookRight", "GestureUp", "LookUpRight", "IdleSideToSide", "LookLeft", "LookUpLeft", "IdleFingerTap", "GestureLeft", "Wave", "GestureRight", "Writing", "IdleSnooze", "LookDownRight", "LookDown", "LookUp", "GestureDown", "RestPose", "IdleEyeBrowRaise", "LookDownLeft"]
+        item = items[Math.floor(Math.random() * items.length)];
+        PDucky.stopCurrent
+        PDucky.animate(item)
+      });
+    });
