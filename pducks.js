@@ -149,35 +149,3 @@ if (window.location.href.indexOf("pagerduty.com/incidents/") > -1) {
 
 }
 
-if (window.location.pathname.indexOf("service")>0 || window.location.pathname.indexOf("user")>0 || window.location.pathname.indexOf("escalation_policies")>0  || window.location.pathname.indexOf("schedules")>0 ) {
-  (function() {
-    //This is code that's loaded ONLY on the serices/users/escalation_policies page
-    console.log("PDucks: Stupid Clippy demo");
-    $('head').append('<link rel="stylesheet" type="text/css" href="https://eurica.github.io/pducks/clippy/build/clippy.css">');
-
-    s=document.createElement('script');
-    s.setAttribute('src', 'https://eurica.github.io/pducks/clippy/build/clippy.min.js');
-    document.getElementsByTagName('head')[0].appendChild(s);
-
-    if (window.location.pathname.indexOf("service")>0) { 
-      window.setTimeout(function(){PDucky.speak("You look like you're trying to upgrade to enterprise.")},3000)
-    }
-    if (window.location.pathname.indexOf("user")>0) {
-      window.setTimeout(function(){PDucky.speak('You look like you should add some more users.')},3000)
-    }
-
-    if (window.location.pathname.indexOf("schedules")>0) {
-      var action = $(".edit-calendar").first()
-      if(action.length==1) {
-        window.setTimeout(function(){
-          PDucky.moveTo(action.offset().left, action.offset().top)
-          PDucky.speak("You look like you're considering editing a schedule. Don't.")
-          PDucky.animate("GestureUp")
-        },2000)
-      }
-    }
-
-
-  })()
-}
-
